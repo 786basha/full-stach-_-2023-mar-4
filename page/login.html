@@ -5,12 +5,79 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        *{
+    padding: 0;margin: 0;box-sizing: border-box;text-decoration: none;
+}
+
+.box{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    width: 60vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h2{
+    border-bottom: 2px solid black;
+    width: 8vw;
+    padding: 3px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+input{
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+    width: 250px;
+    border-radius: 10px;
+    border: 1px solid rgb(243, 146, 146);
+}
+
+.form h2, .d1, btn{
+    text-align: center;
+    margin: 10px;
+}
+
+button{
+    font-weight: 20px;
+    padding: 10px;
+    width: 150px;
+    font-weight: bold;
+    border-radius: 10px;
+    border: none;
+    background-color: violet;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: rgb(172, 35, 35);
+    color: antiquewhite;
+    font-weight: bolder;
+    letter-spacing: 1px;
+    transition: 1s;
+}
+
+a{
+    margin: 15px 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="/styles/style_login.css">
 </head>
 <body>
     <div class="box">
-        <form>
+        <div class="form">
             <h2>Login</h2>
             <div class="d1">
                 <i class="fa fa-user"></i>
@@ -23,8 +90,27 @@
             <div class="btn">
                 <button>Login</button>
             </div>
-            <a href="/page/signup.html">SignUp</a>
-        </form>
+            <a href="http://localhost:9000/app/signup">SignUp </a>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+
+    <script>
+        let btn = document.querySelector('button');
+        btn.addEventListener('click',async function(e){
+            e.preventDefault();
+            let name = document.getElementById('uname').value;
+            let Upass = document.getElementById('upass').value;
+            let resp = await axios.post('/app/login',{name,Upass});
+            if (resp != null){
+                alert("LOGIN");
+            }
+            else{
+                alert("FAILED");
+            }
+        })
+    </script>
+
 </body>
 </html>

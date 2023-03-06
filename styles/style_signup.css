@@ -1,11 +1,12 @@
 *{
     padding: 0;margin: 0;box-sizing: border-box;
     font-family:Arial, Helvetica, sans-serif;
-    color: rgb(255, 255, 255);
+    color: white;
 }
 
 body{
-    background-image: url('/pic/bg.jpg');
+    /* background-image: url('/pic/bg.jpg'); */
+    background-color: aqua;
     width: 100vw;
     height: 100vh;
     background-position: center;
@@ -22,10 +23,13 @@ body{
 
 
 form{
+    padding: 10px;
+    border-radius: 15px;
     margin: auto;
     width: 40vw;
     height: max-content;
-    background-image: url('/pic/bg.jpg');
+    /* background-image: url('/pic/bg.jpg'); */
+    background-color: rgb(0, 0, 0);
     background-position: center;
     background-size: cover;
     background-blend-mode:difference;
@@ -45,7 +49,11 @@ form input{
     margin: 5px;
     padding: 10px;
     width: 250px;
+    border: 1px solid darkgrey;
     border-radius: 10px;
+    /* color: red; */
+    font-weight: bold;
+    /* text-align: center; */
 }
 form label{
     margin: 10px;
@@ -61,6 +69,7 @@ form label{
 }
 
 .bt input{
+    cursor: pointer;
     width: 115px;
     font-weight: bold;
     letter-spacing: 1px;
@@ -68,4 +77,12 @@ form label{
     border: none;
     color: black;
     background-color: rgb(105, 166, 187);
+}
+
+#upan{
+    text-transform: uppercase;
+}
+
+#uadar{
+    font
 }

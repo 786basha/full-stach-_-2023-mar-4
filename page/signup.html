@@ -5,12 +5,123 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign up</title>
+    <style>
+        *{
+    padding: 0;margin: 0;box-sizing: border-box;
+    font-family:Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+body{
+    /* background-image: url('/pic/bg.jpg'); */
+    background-color: aqua;
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+
+.box{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.form{
+    padding: 10px;
+    border-radius: 15px;
+    margin: auto;
+    width: 40vw;
+    height: max-content;
+    /* background-image: url('/pic/bg.jpg'); */
+    background-color: rgb(0, 0, 0);
+    background-position: center;
+    background-size: cover;
+    background-blend-mode:difference;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 1px 1px 25px black;
+}
+.form h2{
+    border-bottom: 1px solid rgb(39, 185, 253);
+    margin: 7px 0;
+}
+
+.form input{
+    background-color: transparent;
+    margin: 5px;
+    padding: 10px;
+    width: 250px;
+    border: 1px solid darkgrey;
+    border-radius: 10px;
+    /* color: red; */
+    font-weight: bold;
+    /* text-align: center; */
+}
+.form label{
+    margin: 10px;
+}
+.log{
+    margin: 8px;
+}
+
+.log label{
+   
+    font-weight: bold;
+
+}
+
+a button{
+    width: 250px;
+
+}
+
+.bt button{
+    width: 150px;
+    background-color: rgb(42, 116, 141);
+}
+.bt input{
+    width: 150px;
+}
+
+/* .bt input{
+    display: flex;
+    flex-wrap: wrap;
+    cursor: pointer;
+    width: 115px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 15px;
+    border: none;
+    color: black;
+    background-color: rgb(105, 166, 187);
+} */
+
+#upan{
+    text-transform: uppercase;
+}
+
+button{
+    border: none;
+    padding: 10px;
+    width: 115px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgb(39, 103, 124);
+}
+
+    </style>
     <link rel="stylesheet" href="/styles/style_signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="box">
-        <form>
+        <div class="form">
             <h2>Sign Up </h2>
 
             <div class="log">
@@ -24,9 +135,9 @@
                 <label>Full Details</label><i class="fa fa-id-card"></i>
             </div>
 
-            <input type="text" placeholder="Aadhaar Number" id="uadar" required>
+            <input type="text" placeholder="Aadhaar Number" id="uadar" required >
            
-            <input type="text" placeholder="Pan Number" id="upan" required>
+            <input type="text" placeholder="Pan Number" id="upan" required >
            
             <input type="text" placeholder="Mobile Number" id="umob" required>
            
@@ -41,9 +152,40 @@
             <input type="password" placeholder="Conform Password" id="cuspass" required>
             <div class="bt">
                 <input type="reset" value="Reset">
-            <input type="submit" value="Signup">
+                <button>Submit</button>
             </div>
-        </form>
+            <a href="http://localhost:9000/app/"><button>Go Home</button></a>
+            <p id="req"></p>
+        </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script>  
+            let btn = document.querySelector('button');
+            btn.addEventListener('click',async function(e){
+                e.preventDefault();
+
+            let name = document.getElementById('uname').value;
+            let roll_Number = document.getElementById('uroll').value;
+
+            let Aadhaar_Number = document.getElementById('uadar').value;
+            let Pan_Number = document.getElementById('upan').value;
+            let Number = document.getElementById('umob').value;
+
+            let User_Id = document.getElementById('usname').value;
+            let User_Mail = document.getElementById('umail').value;
+            let Upass = document.getElementById('uspass').value;
+
+            var resp = await axios.post('/app/signup',{name,roll_Number,Aadhaar_Number,Pan_Number,Number,User_Id,User_Mail,Upass});
+            alert("Success fully registered by " + resp.data.name + "\n Now you can go back to home page !");
+            if (resp != null){
+
+            }
+        })
+
+
+
+    </script>
+
 </body>
 </html>
